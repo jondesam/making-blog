@@ -13,6 +13,9 @@ let posts = [];
 
 const app = express();
 
+
+
+
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({
@@ -22,6 +25,7 @@ app.use(express.static("public"));
 
 /// home page ///
 app.get("/", function(req, res) {
+
 
   res.render("home.ejs", {
     paragraph: homeStartingContent,
@@ -72,32 +76,21 @@ app.get("/posts/:postName", function(req, res) {
 
   let lowerParaName = _.lowerCase(paraName);
 
-  //console.log(lowerParaName);
-  //posts.push()
 
   posts.forEach(function(post) {
 
     let lowerPostTitle = _.lowerCase(post.title)
 
-    // console.log(lowerPostTitle);
-
     if (lowerParaName === lowerPostTitle) {
       console.log("matched!");
       console.log("/posts" + "/" + paraName);
-
-      /////post page ////
-
 
 
         res.render("post", {
 
           titleInPage:post.title,
           bodyInPage: post.body
-//           postsArray: posts
-
         });
-
-
 
     } else {
       console.log("Not a  match!");

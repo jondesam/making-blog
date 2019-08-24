@@ -1,5 +1,6 @@
 <%- include("../" + "views/partials/header") -%>
 
+
 <h1>Home</h1>
 <p> <%= paragraph %> </p>
 
@@ -10,7 +11,14 @@
 
 
 <h1> <%= post.title %> </h1>
-<p> <%= post.body %> </p>
+
+<%   let normalString  =  post.body %>
+<%   let truncatedString = normalString.substring(0, 100) + " ..."  %>
+
+<p>
+  <%= truncatedString %>
+  <a href="/posts/<%=post.title%>">Read More</a>
+</p>
 
 <% }); %>
 
